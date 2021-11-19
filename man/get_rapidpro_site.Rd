@@ -7,7 +7,7 @@
 get_rapidpro_site()
 }
 \value{
-returns the website name set in the environment for the rapidPro data
+returns a string containing the website name set in the environment for the rapidPro data.
 }
 \description{
 Get the site value from the environment

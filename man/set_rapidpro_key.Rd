@@ -7,7 +7,7 @@
 set_rapidpro_key(key)
 }
 \arguments{
-\item{key}{string denoting the API Token associated with the website given in set_rapidpro_site()}
+\item{key}{A string denoting the API Token associated with the website given in set_rapidpro_site()}
 }
 \value{
 

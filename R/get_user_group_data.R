@@ -1,5 +1,14 @@
-# get data detailing the user group information.
-
+#' Get data detailing the user group information.
+#' Is this function needed? We do not use it anymore.
+#' 
+#' @param user_data 
+#' @param name 
+#' @param uuid 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 get_user_group_data <- function(user_data = get_user_data(), name = NULL, uuid = NULL){
   
   # check name/uuid for typo

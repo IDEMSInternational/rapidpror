@@ -1,6 +1,15 @@
-# Get the survey data
 # known elsewhere as: "survey_datetime_split_multiple"
 # TODO: not sure if this would work as a general package function, or if we should have it in our separate ParentText work.
+#' Get the survey data
+#'
+#' @param parenting_variable A character vector containing ...
+#' @param survey_max A numerical value denoting ...
+#'
+#' @return A list of survey data
+#' @export
+#'
+#' @examples
+#'
 get_survey_data <- function(parenting_variable, survey_max = 9){
   survey_entry <- NULL
   for (i in 1:survey_max){

@@ -43,7 +43,7 @@ get_flow_data <- function(uuid_data = get_rapidpro_uuid_names(), flow_name, resu
       response <- result_flow$responded
       category <- result_flow$values$result$category            
       flow_interaction[[i]] <- tibble::tibble(uuid, response) #, category)
-      flow_interaction[[i]] <- flow_interaction[[i]] %>% mutate(flow_type = uuid_flow[1])
+      flow_interaction[[i]] <- flow_interaction[[i]] %>% dplyr::mutate(flow_type = uuid_flow[1])
       #if (flatten){
       flow_interaction[[i]] <- jsonlite::flatten(flow_interaction[[i]])
       #}

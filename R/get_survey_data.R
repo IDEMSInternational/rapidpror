@@ -14,12 +14,12 @@ get_survey_data <- function(parenting_variable, survey_max = 9){
   survey_entry <- NULL
   for (i in 1:survey_max){
     # split the string by different surveys taken
-    split_parenting <- str_split(parenting_variable, pattern = fixed("|"))
+    split_parenting <- stringr::str_split(parenting_variable, pattern = fixed("|"))
     
     # for each individual, get each survey value (split by ,)
     parenting_response <- NULL
     for (j in 1:length(split_parenting)){
-      split_parenting_2 <- str_split(split_parenting[[j]], ",") 
+      split_parenting_2 <- stringr::str_split(split_parenting[[j]], ",") 
       
       # if it is NA, keep as NA
       if (is.na(split_parenting_2[[1]][3])){

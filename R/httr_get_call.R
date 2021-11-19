@@ -13,7 +13,7 @@ httr_get_call <- function(get_command, token = get_rapidpro_key()){
   raw <- httr::content(response, as = "text")
   results <- jsonlite::fromJSON(raw)
   if(!is.null(results$'next')){
-    bind_rows(results$results, httr_get_call(results$'next',token))
+    dplyr::bind_rows(results$results, httr_get_call(results$'next', token))
   } else {
     return(results$results)
   }

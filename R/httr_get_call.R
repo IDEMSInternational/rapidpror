@@ -1,4 +1,13 @@
 # Calling data - this function is called in other functions
+#' Calling data from RapidPro
+#'
+#' @param get_command A string containing the website to call the data from. Usually called within a function.
+#' @param token A string containing the token to call the data. See set_rapidpro_key() to amend the token.
+#'
+#' @return
+#' @export
+#'
+#' @examples
 httr_get_call <- function(get_command, token = get_rapidpro_key()){
   response <- httr::GET(get_command, config = httr::add_headers(Authorization = paste("Token", token)))
   raw <- httr::content(response, as = "text")

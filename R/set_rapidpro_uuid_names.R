@@ -1,4 +1,11 @@
-# Set the rapidpro uuid names. By default, the flow names. This function is usually called in another function
-set_rapidpro_uuid_names = function(uuid_names = get_flow_names()){#[c("uuid", "name")]) {
+#' Set the UUID names in the environment for the flow data
+#'
+#' @param uuid_names Default get_flow_names() (recommended). Data frame containing the flow names and UUIDs.
+#'
+#' @return
+#' @export
+#'
+#' @examples
+set_rapidpro_uuid_names = function(uuid_names = get_flow_names()){
   assign("rapidpro_uuid_names", uuid_names, envir = pkg.env)
 }

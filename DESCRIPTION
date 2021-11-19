@@ -13,3 +13,9 @@ RoxygenNote: 7.1.1
 Suggests: 
     testthat (>= 2.0.0)
 Config/testthat/edition: 2
+Imports: 
+    stringr,
+    dplyr,
+    magrittr,
+    jsonlite,
+    tibble

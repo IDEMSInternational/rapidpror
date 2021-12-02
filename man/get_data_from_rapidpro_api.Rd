@@ -21,11 +21,8 @@ get_data_from_rapidpro_api(
 \item{flatten}{Default FALSE. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
 }
 \value{
-TODO
+
 }
 \description{
 Calling data from rapidpro API
-}
-\examples{
-TODO
 }

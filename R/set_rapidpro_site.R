@@ -5,8 +5,6 @@
 #' @return
 #' @export
 #'
-#' @examples
-
 set_rapidpro_site = function(site) {
-  assign("rapidpro_site", site, envir = pkg.env)
+  pkg_env$rapidpro_site <- NULL 
 }

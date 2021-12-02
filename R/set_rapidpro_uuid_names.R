@@ -4,8 +4,6 @@
 #'
 #' @return
 #' @export
-#'
-#' @examples
 set_rapidpro_uuid_names = function(uuid_names = get_flow_names()){
-  assign("rapidpro_uuid_names", uuid_names, envir = pkg.env)
+  pkg_env$rapidpro_uuid_names <- NULL 
 }

@@ -8,13 +8,11 @@
 #' @return A list of survey data
 #' @export
 #'
-#' @examples
-#'
 get_survey_data <- function(parenting_variable, survey_max = 9){
   survey_entry <- NULL
   for (i in 1:survey_max){
     # split the string by different surveys taken
-    split_parenting <- stringr::str_split(parenting_variable, pattern = fixed("|"))
+    split_parenting <- stringr::str_split(parenting_variable, pattern = stringr::fixed("|"))
     
     # for each individual, get each survey value (split by ,)
     parenting_response <- NULL

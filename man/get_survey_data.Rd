@@ -17,6 +17,3 @@ A list of survey data
 \description{
 Get the survey data
 }
-\examples{
-
-}

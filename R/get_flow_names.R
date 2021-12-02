@@ -8,8 +8,6 @@
 #'
 #' @return
 #' @export
-#'
-#' @examples
 get_flow_names <- function(call_type = "flows.json", rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), flatten = FALSE){
   # TODO put in checks - check site is correct, then token, then call_type
   get_command <- paste(rapidpro_site, call_type, sep = "")

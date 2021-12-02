@@ -11,8 +11,6 @@
 #'
 #' @return List separated by each flow_name provided. Each element in the list contains a data frame for each flow_name provided.
 #' @export
-#'
-#' @examples
 get_flow_data <- function(uuid_data = get_rapidpro_uuid_names(), flow_name, result, call_type="runs.json?flow=", rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), flatten = FALSE, checks = FALSE){
   # todo: checks/error handling messages.
   

@@ -4,8 +4,6 @@
 #'
 #' @return
 #' @export
-#'
-#' @examples
 set_rapidpro_key = function(key) {
-  assign("rapidpro_key", key, envir = pkg.env)
+  pkg_env$rapidpro_key <- NULL
 }

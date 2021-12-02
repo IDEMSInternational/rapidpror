@@ -2,7 +2,7 @@ pkg_env <- new.env(parent = emptyenv())
 assign("rapidpro_key", NULL, envir = pkg_env)
 assign("rapidpro_site", NULL, envir = pkg_env)
 
-# From the book:
+# From 19.2.3: https://r-pkgs.org/r-cmd-check.html?q=new.env#r-code
 # "Don’t use assign() to modify objects in the global environment.
 # If you need to maintain state across function calls, create your own environment with
 # e <- new.env(parent = emptyenv())

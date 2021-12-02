@@ -7,8 +7,6 @@
 #'
 #' @return returns a data frame containing the contact data.
 #' @export
-#'
-#' @examples
 get_user_data <- function(call_type="contacts.json", rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), flatten = FALSE){
   # todo: checks/error handling messages.
   get_command <- paste(rapidpro_site, call_type, sep = "")

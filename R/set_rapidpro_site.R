@@ -6,5 +6,5 @@
 #' @export
 #'
 set_rapidpro_site = function(site) {
-  pkg_env$rapidpro_site <- NULL 
+  pkg_env$rapidpro_site <- site 
 }

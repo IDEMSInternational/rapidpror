@@ -5,5 +5,5 @@
 #' @return
 #' @export
 set_rapidpro_uuid_names = function(uuid_names = get_flow_names()){
-  pkg_env$rapidpro_uuid_names <- NULL 
+  pkg_env$rapidpro_uuid_names <- uuid_names 
 }

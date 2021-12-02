@@ -5,5 +5,5 @@
 #' @return
 #' @export
 set_rapidpro_key = function(key) {
-  pkg_env$rapidpro_key <- NULL
+  pkg_env$rapidpro_key <- key 
 }

@@ -1,5 +1,6 @@
 #' Reset the website in the environment
-#'
+#' @description Set the website to access the data.
+#' 
 #' @param site A string denoting the website to call the API data from.
 #'
 #' @return

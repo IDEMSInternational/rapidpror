@@ -1,4 +1,4 @@
-#' Calling Data from RapidPro API
+#' Calling data from RapidPro API
 #' 
 #' @description A generalised way to call data from the RapidPro API.
 #'

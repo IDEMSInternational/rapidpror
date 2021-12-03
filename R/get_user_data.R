@@ -1,4 +1,5 @@
-#' Get data from each contact
+#' Get data for each user
+#' @description Call the contact data from RapidPro for each user
 #'
 #' @param call_type A string containing the call type.
 #' @param rapidpro_site A string containing the rapidpro website to call the data from. See `set_rapidpro_site()` to amend the website.

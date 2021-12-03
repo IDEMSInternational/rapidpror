@@ -1,5 +1,7 @@
-#' Get data from each run (flow)
+#' Get Data from each Run (Flow)
 #'
+#' @description Call RapidPro data from each run or flow.
+#' 
 #' @param uuid_data A string containing UUID values. See `set_rapidpro_uuid_names()` to set this value.
 #' @param flow_name A string containing flow names to call data from.
 #' @param result TODO: result name? If so, we need to make it so you can change the result name.
@@ -11,7 +13,7 @@
 #'
 #' @return List separated by each flow_name provided. Each element in the list contains a data frame for each flow_name provided.
 #' @export
-get_flow_data <- function(uuid_data = get_rapidpro_uuid_names(), flow_name, call_type="runs.json?flow=", rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), flatten = FALSE, checks = FALSE){
+get_flow_data <- function(uuid_data = get_rapidpro_uuid_names(), flow_name, call_type = "runs.json?flow=", rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), flatten = FALSE, checks = FALSE){
   if (is.null(rapidpro_site)){
     stop("rapidpro_site is NULL. Set a website with `set_rapidpro_site`.")
   }

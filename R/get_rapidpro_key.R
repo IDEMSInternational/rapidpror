@@ -1,4 +1,6 @@
-#' Get the key (Token) from the environment
+#' Get the Key (Token) from the Environment
+#' 
+#' @description Call the key (token) from the environment. The key is set in the function `set_rapidpro_key`. 
 #'
 #' @return returns a string containing the key (Token) set in the environment for the rapidPro data.
 #' @export

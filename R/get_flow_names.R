@@ -9,7 +9,20 @@
 #' @return
 #' @export
 get_flow_names <- function(call_type = "flows.json", rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), flatten = FALSE){
-  # TODO put in checks - check site is correct, then token, then call_type
+  if (is.null(rapidpro_site)){
+    stop("rapidpro_site is NULL. Set a website with `set_rapidpro_site`.")
+    # could there be a case where the key isn't needed?
+  }
+  if (is.null(token)){
+    stop("token is NULL. Set a token with `set_rapidpro_key`.")
+  }
+  if (is.null(call_type)){
+    stop("call_type is NULL. Expecting a valid call_type.")
+  }
+  if (!is.logical(flatten)){
+    stop("flatten should be TRUE or FALSE")
+  }
+
   get_command <- paste(rapidpro_site, call_type, sep = "")
   flow_names <- httr_get_call(get_command = get_command, token = token)
   if (flatten){

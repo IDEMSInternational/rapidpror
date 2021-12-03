@@ -1,8 +1,8 @@
-# Calling data - this function is called in other functions
 #' Calling data from RapidPro
+#' @description Call data from RapidPro into R. The main purpose of this function is to be called within other functions.
 #'
 #' @param get_command A string containing the website to call the data from. Usually called within a function.
-#' @param token A string containing the token to call the data. See set_rapidpro_key() to amend the token.
+#' @param token A string containing the token to call the data. See `set_rapidpro_key()` to amend the token.
 #'
 #' @return
 #' @export

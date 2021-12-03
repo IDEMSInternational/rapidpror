@@ -1,6 +1,7 @@
 #' Reset the key value in the environment
+#' @description Set a key (token) value to access the given RapidPro website.
 #'
-#' @param key A string denoting the API Token associated with the website given in set_rapidpro_site()
+#' @param key A string denoting the API Token associated with the website given in `set_rapidpro_site`.
 #'
 #' @return
 #' @export

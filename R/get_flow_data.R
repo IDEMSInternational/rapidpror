@@ -1,4 +1,4 @@
-#' Get Data from each Run (Flow)
+#' Get data from each run (flow)
 #'
 #' @description Call RapidPro data from each run or flow.
 #' 

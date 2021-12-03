@@ -1,4 +1,4 @@
-#' Function to get a data frame containing the UUID and names for flows.
+#' Get a data frame containing the UUID and names for flows.
 #'
 #' @description Call the names of each run (flow) and their UUID values. This function is often called inside another function.
 #' 

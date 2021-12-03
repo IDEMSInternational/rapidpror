@@ -6,5 +6,8 @@
 #' @export
 #'
 set_rapidpro_site = function(site) {
+  if (!is.character(site)){
+    stop("`site` provided should be a character variable")
+  }
   pkg_env$rapidpro_site <- site 
 }

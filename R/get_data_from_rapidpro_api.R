@@ -1,8 +1,7 @@
-# A generalised version of get_user_data.R
-# We don't use this function, but it may have a purpose. TODO: discuss this. 
+#' Calling Data from RapidPro API
 #' 
-#' Calling data from rapidpro API
-#' 
+#' @description A generalised way to call data from the RapidPro API.
+#'
 #' @param call_type A string containing the call type, e.g., `"flows.json"`.
 #' @param rapidpro_site A string containing the rapidpro website to call the data from. See `set_rapidpro_site()` to amend the website.
 #' @param token A string containing the token to call the data. See `set_rapidpro_key()` to amend the token.

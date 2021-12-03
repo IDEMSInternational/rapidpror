@@ -3,8 +3,7 @@
 #' 
 #' @param site A string denoting the website to call the API data from.
 #'
-#' @return
-#' @export
+#' @return A string containing the RapidPro website.
 #'
 set_rapidpro_site = function(site) {
   if (!is.character(site)){

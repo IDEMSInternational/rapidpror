@@ -9,11 +9,11 @@ httr_get_call(get_command, token = get_rapidpro_key())
 \arguments{
 \item{get_command}{A string containing the website to call the data from. Usually called within a function.}
 
-\item{token}{A string containing the token to call the data. See set_rapidpro_key() to amend the token.}
+\item{token}{A string containing the token to call the data. See \code{set_rapidpro_key()} to amend the token.}
 }
 \value{
-
+A data frame containing RapidPro data.
 }
 \description{
-Calling data from RapidPro
+Call data from RapidPro into R. The main purpose of this function is to be called within other functions.
 }

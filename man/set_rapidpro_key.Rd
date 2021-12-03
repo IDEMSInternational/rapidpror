@@ -7,11 +7,11 @@
 set_rapidpro_key(key)
 }
 \arguments{
-\item{key}{A string denoting the API Token associated with the website given in set_rapidpro_site()}
+\item{key}{A string denoting the API Token associated with the website given in \code{set_rapidpro_site}.}
 }
 \value{
-
+A string containing the key (token) required to access the given RapidPro website.
 }
 \description{
-Reset the key value in the environment
+Set a key (token) value to access the given RapidPro website.
 }

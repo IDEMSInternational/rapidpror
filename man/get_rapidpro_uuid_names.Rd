@@ -7,8 +7,8 @@
 get_rapidpro_uuid_names()
 }
 \value{
-returns the UUID names set in the environment for the rapidPro data
+returns the UUID names set in the environment for the RapidPro data.
 }
 \description{
-Get the UUID names from the environment
+Call the UUID names from the environment. This set in the function \code{set_rapidpro_uuid_names}.
 }

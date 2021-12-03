@@ -7,7 +7,7 @@
 #' @param token A string containing the token to call the data. See `set_rapidpro_key()` to amend the token.
 #' @param flatten Default `FALSE`. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.
 #'
-#' @return
+#' @return A data frame containing the flows data in RapidPro.
 #' @export
 get_flow_names <- function(call_type = "flows.json", rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), flatten = FALSE){
   if (is.null(rapidpro_site)){

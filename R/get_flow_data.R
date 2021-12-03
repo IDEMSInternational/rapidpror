@@ -4,7 +4,6 @@
 #' 
 #' @param uuid_data A string containing UUID values. See `set_rapidpro_uuid_names()` to set this value.
 #' @param flow_name A string containing flow names to call data from.
-#' @param result TODO: result name? If so, we need to make it so you can change the result name.
 #' @param call_type A string containing the call type.
 #' @param rapidpro_site A string containing the rapidpro website to call the data from. See `set_rapidpro_site()` to amend the website.
 #' @param token A string containing the token to call the data. See `set_rapidpro_key()` to amend the token.
@@ -71,7 +70,7 @@ get_flow_data <- function(uuid_data = get_rapidpro_uuid_names(), flow_name, call
       #  category <- NA
       #}
       flow_interaction[[i]] <- tibble::tibble(uuid, response)#, category)
-      flow_interaction[[i]] <- flow_interaction[[i]] %>% mutate(flow_type = uuid_flow[1])
+      flow_interaction[[i]] <- flow_interaction[[i]] %>% dplyr::mutate(flow_type = uuid_flow[1])
       #if (flatten){
       flow_interaction[[i]] <- jsonlite::flatten(flow_interaction[[i]])
       #}

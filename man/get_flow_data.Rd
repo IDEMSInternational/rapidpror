@@ -7,7 +7,6 @@
 get_flow_data(
   uuid_data = get_rapidpro_uuid_names(),
   flow_name,
-  result,
   call_type = "runs.json?flow=",
   rapidpro_site = get_rapidpro_site(),
   token = get_rapidpro_key(),
@@ -16,25 +15,23 @@ get_flow_data(
 )
 }
 \arguments{
-\item{uuid_data}{A string containing UUID values. See set_rapidpro_uuid_names() to set this value.}
+\item{uuid_data}{A string containing UUID values. See \code{set_rapidpro_uuid_names()} to set this value.}
 
 \item{flow_name}{A string containing flow names to call data from.}
 
-\item{result}{TODO: result name? If so, we need to make it so you can change the result name.}
-
 \item{call_type}{A string containing the call type.}
 
-\item{rapidpro_site}{A string containing the rapidpro website to call the data from. See set_rapidpro_site() to amend the website.}
+\item{rapidpro_site}{A string containing the rapidpro website to call the data from. See \code{set_rapidpro_site()} to amend the website.}
 
-\item{token}{A string containing the token to call the data. See set_rapidpro_key() to amend the token.}
+\item{token}{A string containing the token to call the data. See \code{set_rapidpro_key()} to amend the token.}
 
-\item{flatten}{Default FALSE. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
+\item{flatten}{Default \code{FALSE}. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
 
-\item{checks}{Default FALSE. A boolean whether to check and update the data if it is not found.}
+\item{checks}{Default \code{FALSE}. A boolean whether to check and update the data if it is not found.}
 }
 \value{
 List separated by each flow_name provided. Each element in the list contains a data frame for each flow_name provided.
 }
 \description{
-Get data from each run (flow)
+Call RapidPro data from each run or flow.
 }

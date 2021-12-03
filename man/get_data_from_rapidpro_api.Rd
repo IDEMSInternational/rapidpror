@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_data_from_rapidpro_api.R
 \name{get_data_from_rapidpro_api}
 \alias{get_data_from_rapidpro_api}
-\title{Calling data from rapidpro API}
+\title{Calling data from RapidPro API}
 \usage{
 get_data_from_rapidpro_api(
   call_type,
@@ -12,17 +12,17 @@ get_data_from_rapidpro_api(
 )
 }
 \arguments{
-\item{call_type}{A string containing the call type}
+\item{call_type}{A string containing the call type, e.g., \code{"flows.json"}.}
 
-\item{rapidpro_site}{A string containing the rapidpro website to call the data from. See set_rapidpro_site() to amend the website.}
+\item{rapidpro_site}{A string containing the rapidpro website to call the data from. See \code{set_rapidpro_site()} to amend the website.}
 
-\item{token}{A string containing the token to call the data. See set_rapidpro_key() to amend the token.}
+\item{token}{A string containing the token to call the data. See \code{set_rapidpro_key()} to amend the token.}
 
-\item{flatten}{Default FALSE. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
+\item{flatten}{Default \code{FALSE}. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
 }
 \value{
-
+A data frame of the data specified in the \code{call_type} parameter.
 }
 \description{
-Calling data from rapidpro API
+A generalised way to call data from the RapidPro API.
 }

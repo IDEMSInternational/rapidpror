@@ -10,8 +10,8 @@ set_rapidpro_site(site)
 \item{site}{A string denoting the website to call the API data from.}
 }
 \value{
-
+A string containing the RapidPro website.
 }
 \description{
-Reset the website in the environment
+Set the website to access the data.
 }

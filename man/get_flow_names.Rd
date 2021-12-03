@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_flow_names.R
 \name{get_flow_names}
 \alias{get_flow_names}
-\title{Function to get a data frame containing the UUID and names for flows.}
+\title{Get a data frame containing the UUID and names for flows.}
 \usage{
 get_flow_names(
   call_type = "flows.json",
@@ -14,15 +14,15 @@ get_flow_names(
 \arguments{
 \item{call_type}{A string containing the call type.}
 
-\item{rapidpro_site}{A string containing the rapidpro website to call the data from. See set_rapidpro_site() to amend the website.}
+\item{rapidpro_site}{A string containing the rapidpro website to call the data from. See \code{set_rapidpro_site()} to amend the website.}
 
-\item{token}{A string containing the token to call the data. See set_rapidpro_key() to amend the token.}
+\item{token}{A string containing the token to call the data. See \code{set_rapidpro_key()} to amend the token.}
 
-\item{flatten}{Default FALSE. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
+\item{flatten}{Default \code{FALSE}. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
 }
 \value{
-
+A data frame containing the flows data in RapidPro.
 }
 \description{
-Function to get a data frame containing the UUID and names for flows.
+Call the names of each run (flow) and their UUID values. This function is often called inside another function.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_rapidpro_key.R
 \name{get_rapidpro_key}
 \alias{get_rapidpro_key}
-\title{Get the key (Token) from the environment}
+\title{Get the key (token) from the environment}
 \usage{
 get_rapidpro_key()
 }
@@ -10,5 +10,5 @@ get_rapidpro_key()
 returns a string containing the key (Token) set in the environment for the rapidPro data.
 }
 \description{
-Get the key (Token) from the environment
+Call the key (token) from the environment. The key is set in the function \code{set_rapidpro_key}.
 }

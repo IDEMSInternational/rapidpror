@@ -3,7 +3,7 @@
 #'
 #' @param key A string denoting the API Token associated with the website given in `set_rapidpro_site`.
 #'
-#' @return
+#' @return A string containing the key (token) required to access the given RapidPro website.
 #' @export
 set_rapidpro_key = function(key) {
   if (!is.character(key)){

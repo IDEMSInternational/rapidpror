@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_user_data.R
 \name{get_user_data}
 \alias{get_user_data}
-\title{Get data from each contact}
+\title{Get data for each user}
 \usage{
 get_user_data(
   call_type = "contacts.json",
@@ -14,15 +14,15 @@ get_user_data(
 \arguments{
 \item{call_type}{A string containing the call type.}
 
-\item{rapidpro_site}{A string containing the rapidpro website to call the data from. See set_rapidpro_site() to amend the website.}
+\item{rapidpro_site}{A string containing the rapidpro website to call the data from. See \code{set_rapidpro_site()} to amend the website.}
 
-\item{token}{A string containing the token to call the data. See set_rapidpro_key() to amend the token.}
+\item{token}{A string containing the token to call the data. See \code{set_rapidpro_key()} to amend the token.}
 
-\item{flatten}{Default FALSE. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
+\item{flatten}{Default \code{FALSE}. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
 }
 \value{
 returns a data frame containing the contact data.
 }
 \description{
-Get data from each contact
+Call the contact data from RapidPro for each user
 }

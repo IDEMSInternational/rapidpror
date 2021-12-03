@@ -1,6 +1,7 @@
-# This function is usually called in another function
-#' Function to get a data frame containing the UUID and names for flows.
+#' Function to get a Data Frame Containing the UUID and Names for Flows.
 #'
+#' @description Call the names of each run (flow) and their UUID values. This function is often called inside another function.
+#' 
 #' @param call_type A string containing the call type.
 #' @param rapidpro_site A string containing the rapidpro website to call the data from. See `set_rapidpro_site()` to amend the website.
 #' @param token A string containing the token to call the data. See `set_rapidpro_key()` to amend the token.

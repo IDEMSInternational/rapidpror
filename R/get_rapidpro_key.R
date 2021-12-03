@@ -1,4 +1,4 @@
-#' Get the Key (Token) from the Environment
+#' Get the key (token) from the environment
 #' 
 #' @description Call the key (token) from the environment. The key is set in the function `set_rapidpro_key`. 
 #'

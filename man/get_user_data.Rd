@@ -5,15 +5,12 @@
 \title{Get data for each user}
 \usage{
 get_user_data(
-  call_type = "contacts.json",
   rapidpro_site = get_rapidpro_site(),
   token = get_rapidpro_key(),
   flatten = FALSE
 )
 }
 \arguments{
-\item{call_type}{A string containing the call type.}
-
 \item{rapidpro_site}{A string containing the rapidpro website to call the data from. See \code{set_rapidpro_site()} to amend the website.}
 
 \item{token}{A string containing the token to call the data. See \code{set_rapidpro_key()} to amend the token.}

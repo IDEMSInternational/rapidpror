@@ -7,7 +7,10 @@
 get_user_data(
   rapidpro_site = get_rapidpro_site(),
   token = get_rapidpro_key(),
-  flatten = FALSE
+  flatten = FALSE,
+  date_from = NULL,
+  format_date = "\%Y-\%m-\%d",
+  tzone_date = "UTC"
 )
 }
 \arguments{
@@ -16,6 +19,12 @@ get_user_data(
 \item{token}{A string containing the token to call the data. See \code{set_rapidpro_key()} to amend the token.}
 
 \item{flatten}{Default \code{FALSE}. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
+
+\item{date_from}{character string giving the date to filter the data from.}
+
+\item{format_date}{from \verb{as.POSIX*} function: character string giving a date-time format as used by \code{strptime}.}
+
+\item{tzone_date}{from \verb{as.POSIX*} function: time zone specification to be used for the conversion, if one is required. System-specific (see time zones), but "" is the current time zone, and "GMT" is UTC (Universal Time, Coordinated). Invalid values are most commonly treated as UTC, on some platforms with a warning.}
 }
 \value{
 returns a data frame containing the contact data.

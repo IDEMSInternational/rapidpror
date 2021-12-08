@@ -11,7 +11,10 @@ get_flow_data(
   rapidpro_site = get_rapidpro_site(),
   token = get_rapidpro_key(),
   flatten = FALSE,
-  checks = FALSE
+  checks = FALSE,
+  date_from = NULL,
+  format_date = "\%Y-\%m-\%d",
+  tzone_date = "UTC"
 )
 }
 \arguments{
@@ -28,6 +31,12 @@ get_flow_data(
 \item{flatten}{Default \code{FALSE}. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
 
 \item{checks}{Default \code{FALSE}. A boolean whether to check and update the data if it is not found.}
+
+\item{date_from}{character string giving the date to filter the data from.}
+
+\item{format_date}{from \verb{as.POSIX*} function: character string giving a date-time format as used by \code{strptime}.}
+
+\item{tzone_date}{from \verb{as.POSIX*} function: time zone specification to be used for the conversion, if one is required. System-specific (see time zones), but "" is the current time zone, and "GMT" is UTC (Universal Time, Coordinated). Invalid values are most commonly treated as UTC, on some platforms with a warning.}
 }
 \value{
 List separated by each flow_name provided. Each element in the list contains a data frame for each flow_name provided.

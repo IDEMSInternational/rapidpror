@@ -8,6 +8,6 @@
 #'
 #' @return A data frame containing the flows data in RapidPro.
 #' @export
-get_flow_names <- function(rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), flatten = FALSE){
-  get_data_from_rapidpro_api(call_type = "flows.json", rapidpro_site = rapidpro_site, token = token, flatten = flatten, date_from = NULL)
+get_flow_names <- function(rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), flatten = FALSE, date_from = NULL, format_date = "%Y-%m-%d", tzone_date = "UTC"){
+  get_data_from_rapidpro_api(call_type = "flows.json", rapidpro_site = rapidpro_site, token = token, flatten = flatten, date_from = date_from, format_date = format_date, tzone_date = tzone_date)
 }

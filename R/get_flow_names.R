@@ -5,6 +5,9 @@
 #' @param rapidpro_site A string containing the rapidpro website to call the data from. See `set_rapidpro_site()` to amend the website.
 #' @param token A string containing the token to call the data. See `set_rapidpro_key()` to amend the token.
 #' @param flatten Default `FALSE`. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.
+#' @param date_from character string giving the date to filter the data from.
+#' @param format_date from `as.POSIX*` function: character string giving a date-time format as used by `strptime`.
+#' @param tzone_date from `as.POSIX*` function: time zone specification to be used for the conversion, if one is required. System-specific (see time zones), but "" is the current time zone, and "GMT" is UTC (Universal Time, Coordinated). Invalid values are most commonly treated as UTC, on some platforms with a warning.
 #'
 #' @return A data frame containing the flows data in RapidPro.
 #' @export

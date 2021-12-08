@@ -9,10 +9,13 @@
 #' @param token A string containing the token to call the data. See `set_rapidpro_key()` to amend the token.
 #' @param flatten Default `FALSE`. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.
 #' @param checks Default `FALSE`. A boolean whether to check and update the data if it is not found.
+#' @param date_from character string giving the date to filter the data from.
+#' @param format_date from `as.POSIX*` function: character string giving a date-time format as used by `strptime`.
+#' @param tzone_date from `as.POSIX*` function: time zone specification to be used for the conversion, if one is required. System-specific (see time zones), but "" is the current time zone, and "GMT" is UTC (Universal Time, Coordinated). Invalid values are most commonly treated as UTC, on some platforms with a warning.
 #'
 #' @return List separated by each flow_name provided. Each element in the list contains a data frame for each flow_name provided.
 #' @export
-get_flow_data <- function(uuid_data = get_rapidpro_uuid_names(), flow_name, call_type = "runs.json?flow=", rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), flatten = FALSE, checks = FALSE){
+get_flow_data <- function(uuid_data = get_rapidpro_uuid_names(), flow_name, call_type = "runs.json?flow=", rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), flatten = FALSE, checks = FALSE, date_from = NULL, format_date = "%Y-%m-%d", tzone_date = "UTC"){
   if (is.null(rapidpro_site)){
     stop("rapidpro_site is NULL. Set a website with `set_rapidpro_site`.")
   }
@@ -60,6 +63,9 @@ get_flow_data <- function(uuid_data = get_rapidpro_uuid_names(), flow_name, call
     if (length(result_flow) == 0){
       flow_interaction[[i]] <- NULL
     } else {
+      if (!is.null(date_from)){
+        result_flow <- result_flow %>% dplyr::filter(as.POSIXct(date_from, format=format_date, tzone = tzone_date) < as.POSIXct(result_flow$created_on, format="%Y-%m-%dT%H:%M:%OS", tz = "UTC"))
+      }
       uuid <- result_flow$contact$uuid
       response <- result_flow$responded
       #result <- na.omit(unique(flatten(result_flow$values)$name))[1]

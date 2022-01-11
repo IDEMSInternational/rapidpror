@@ -7,6 +7,7 @@
 #' @param token A string containing the token to call the data. See `set_rapidpro_key()` to amend the token.
 #' @param flatten Default `FALSE`. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.
 #' @param date_from character string giving the date to filter the data from.
+#' @param date_to character string giving the date to filter the data to.
 #' @param format_date from `as.POSIX*` function: character string giving a date-time format as used by `strptime`.
 #' @param tzone_date from `as.POSIX*` function: time zone specification to be used for the conversion, if one is required. System-specific (see time zones), but "" is the current time zone, and "GMT" is UTC (Universal Time, Coordinated). Invalid values are most commonly treated as UTC, on some platforms with a warning.
 #' 
@@ -14,7 +15,7 @@
 #' 
 #' @importFrom dplyr %>%
 get_data_from_rapidpro_api <- function(call_type, rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), flatten = FALSE,
-                                       date_from, format_date = "%Y-%m-%d", tzone_date = "UTC"){
+                                       date_from = NULL, date_to = NULL, format_date = "%Y-%m-%d", tzone_date = "UTC"){
   if (is.null(rapidpro_site)){
     stop("rapidpro_site is NULL. Set a website with `set_rapidpro_site`.")
   }
@@ -34,6 +35,9 @@ get_data_from_rapidpro_api <- function(call_type, rapidpro_site = get_rapidpro_s
   }
   if (!is.null(date_from)){
     user_result <- user_result %>% dplyr::filter(as.POSIXct(date_from, format=format_date, tzone = tzone_date) < as.POSIXct(user_result$created_on, format="%Y-%m-%dT%H:%M:%OS", tz = "UTC"))
+  }
+    if (!is.null(date_to)){
+    user_result <- user_result %>% dplyr::filter(as.POSIXct(date_to, format=format_date, tzone = tzone_date) > as.POSIXct(user_result$created_on, format="%Y-%m-%dT%H:%M:%OS", tz = "UTC"))
   }
   return(user_result)
 }

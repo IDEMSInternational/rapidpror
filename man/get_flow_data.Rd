@@ -13,6 +13,7 @@ get_flow_data(
   flatten = FALSE,
   checks = FALSE,
   date_from = NULL,
+  date_to = NULL,
   format_date = "\%Y-\%m-\%d",
   tzone_date = "UTC"
 )
@@ -33,6 +34,8 @@ get_flow_data(
 \item{checks}{Default \code{FALSE}. A boolean whether to check and update the data if it is not found.}
 
 \item{date_from}{character string giving the date to filter the data from.}
+
+\item{date_to}{character string giving the date to filter the data to.}
 
 \item{format_date}{from \verb{as.POSIX*} function: character string giving a date-time format as used by \code{strptime}.}
 

@@ -9,6 +9,7 @@ get_flow_names(
   token = get_rapidpro_key(),
   flatten = FALSE,
   date_from = NULL,
+  date_to = NULL,
   format_date = "\%Y-\%m-\%d",
   tzone_date = "UTC"
 )
@@ -21,6 +22,8 @@ get_flow_names(
 \item{flatten}{Default \code{FALSE}. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
 
 \item{date_from}{character string giving the date to filter the data from.}
+
+\item{date_to}{character string giving the date to filter the data to.}
 
 \item{format_date}{from \verb{as.POSIX*} function: character string giving a date-time format as used by \code{strptime}.}
 

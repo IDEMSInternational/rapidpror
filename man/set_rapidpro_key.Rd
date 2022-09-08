@@ -4,10 +4,14 @@
 \alias{set_rapidpro_key}
 \title{Reset the key value in the environment}
 \usage{
-set_rapidpro_key(key)
+set_rapidpro_key(key, file = TRUE)
 }
 \arguments{
-\item{key}{A string denoting the API Token associated with the website given in \code{set_rapidpro_site}.}
+\item{key}{A string denoting the API Token associated with the website given in \code{set_rapidpro_site}.
+If \code{file = FALSE}, the string is the key value itself.
+If \code{file = TRUE}, the string is a text file containing the key. Only the first line will be taken in the text file.}
+
+\item{file}{A boolean denoting whether the key given is a file path or a string}
 }
 \value{
 A string containing the key (token) required to access the given RapidPro website.

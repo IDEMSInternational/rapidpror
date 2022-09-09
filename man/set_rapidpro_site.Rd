@@ -7,11 +7,14 @@
 set_rapidpro_site(site)
 }
 \arguments{
-\item{site}{A string denoting the website to call the API data from.}
+\item{site}{A string denoting the website associated with the token given in \code{set_rapidpro_key}.}
 }
 \value{
-A string containing the RapidPro website.
+A string containing the website required to access RapidPro.
 }
 \description{
-Set the website to access the data.
+Reset the website in the environment
+}
+\examples{
+#
 }

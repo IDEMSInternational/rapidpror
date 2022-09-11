@@ -10,7 +10,7 @@
 #' @export
 set_rapidpro_key = function(key, file = FALSE) {
   if (file){
-    file_value <- read.table(key, quote="\"", comment.char="")
+    file_value <- utils::read.table(key, quote="\"", comment.char="")
     key <- file_value[[1]]
   }
   if (!is.character(key)){

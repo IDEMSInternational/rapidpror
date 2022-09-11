@@ -11,7 +11,8 @@ get_user_data(
   date_from = NULL,
   date_to = NULL,
   format_date = "\%Y-\%m-\%d",
-  tzone_date = "UTC"
+  tzone_date = "UTC",
+  unlist_consent = TRUE
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ get_user_data(
 \item{format_date}{from \verb{as.POSIX*} function: character string giving a date-time format as used by \code{strptime}.}
 
 \item{tzone_date}{from \verb{as.POSIX*} function: time zone specification to be used for the conversion, if one is required. System-specific (see time zones), but "" is the current time zone, and "GMT" is UTC (Universal Time, Coordinated). Invalid values are most commonly treated as UTC, on some platforms with a warning.}
+
+\item{unlist_consent}{boolean denoting whether to unlist a variable containing "consent".}
 }
 \value{
 returns a data frame containing the contact data.

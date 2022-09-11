@@ -2,6 +2,7 @@
 #' @description After importing data from RapidPro, unlist the variables that are stored in a list
 #'
 #' @param data The data frame containing the data
+#' @param variable The variable that contains the unlisted variable
 #'
 #' @return returns a data frame containing the unlisted data.
 #' @export

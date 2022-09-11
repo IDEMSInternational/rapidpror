@@ -8,6 +8,8 @@ unlist_rapidpro_variable(data, variable = "groups")
 }
 \arguments{
 \item{data}{The data frame containing the data}
+
+\item{variable}{The variable that contains the unlisted variable}
 }
 \value{
 returns a data frame containing the unlisted data.

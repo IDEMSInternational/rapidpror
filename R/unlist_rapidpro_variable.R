@@ -28,5 +28,7 @@ unlist_rapidpro_variable <- function(data, variable = "groups"){
     }
   }
   data$consent <- consent
+  data$program <- program
+  data$enrolled <- enrolled
   return(data)
 }

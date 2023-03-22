@@ -45,7 +45,7 @@ flow_data_calculation <- function(result_flow, flatten = FALSE, flow_type = "non
       }
     } else if (flow_type == "calm" && !is.null(result_flow$values$calm_interaction)){
       response <- result_flow$values$calm_interaction$category
-      response <- replace_na(response, "No response")
+      response <- tidyr::replace_na(response, "No response")
       flow_interaction <- tibble::tibble(uuid, interacted, response, created_run_on)
     } else if (flow_type == "check_in" && nrow(result_flow$values) > 0){
       if (is.null(result_flow$values$checkin_managed$category)){

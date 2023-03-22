@@ -75,6 +75,6 @@ days_active_data <- function(uuid_data = get_rapidpro_uuid_names(), flow_name, r
   active_days_data <- unique(active_days_data) 
   active_days_data <- active_days_data %>%
     dplyr::group_by(ID) %>%
-    dplyr::summarise(number_days_active = n())
+    dplyr::summarise(number_days_active = dplyr::n())
   return(active_days_data)
 }

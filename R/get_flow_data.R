@@ -1,14 +1,18 @@
 #' Get data from each run (flow)
-#'
 #' @description Call RapidPro data from each run or flow.
 #' 
 #' @param uuid_data A string containing UUID values. See `set_rapidpro_uuid_names()` to set this value.
 #' @param flow_name A string containing flow names to call data from.
-#' @param call_type A string containing the call type.
 #' @param rapidpro_site A string containing the rapidpro website to call the data from. See `set_rapidpro_site()` to amend the website.
 #' @param token A string containing the token to call the data. See `set_rapidpro_key()` to amend the token.
 #' @param flatten Default `FALSE`. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.
 #' @param checks Default `FALSE`. A boolean whether to check and update the data if it is not found.
+#' @param flow_type Default `none`. Takes values `"praise"`, `"calm"`, `"check_in"`, `"tips"`, `"none"`. These are related to ParentText.
+#' @param include_archived_data Default `FALSE`. A boolean denoting whether to include archived data or not.
+#' @param get_by A string denoting how to access the archived data (if `include_archived_data` is `TRUE`). Options are `"read_from_RDS"`, `"gotit"`. The first denotes that the data is read from an RDS file (given in `read_archived_data_from`), the latter that the data is stored and will be read in directly (see `data_from_archived`).
+#' @param data_from_archived If `get_by = "gotit"`, this is the archived data.
+#' @param read_archived_data_from If `get_by = "read_from_RDS"`, this is the archived data.
+#' @param created_on Parameter for flow_data.
 #' @param date_from character string giving the date to filter the data from.
 #' @param date_to character string giving the date to filter the data to.
 #' @param format_date from `as.POSIX*` function: character string giving a date-time format as used by `strptime`.
@@ -16,7 +20,15 @@
 #'
 #' @return List separated by each flow_name provided. Each element in the list contains a data frame for each flow_name provided.
 #' @export
-get_flow_data <- function(uuid_data = get_rapidpro_uuid_names(), flow_name, call_type = "runs.json?flow=", rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), flatten = FALSE, checks = FALSE, date_from = NULL, date_to = NULL, format_date = "%Y-%m-%d", tzone_date = "UTC"){
+# TODO: `flow_type` is relevant to ParentText. We should have a general wrapper for this function in the rapidpror package
+# That wrapper function calls this parenttext specific function from a separate package, and has flow_type = "none".
+get_flow_data <- function(uuid_data = get_rapidpro_uuid_names(), flow_name, rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), flatten = FALSE, checks = FALSE, 
+                          flow_type = "none",
+                          include_archived_data = FALSE, get_by = "gotit", data_from_archived = NULL, # was = archived_data
+                          read_archived_data_from = NULL, # was "archived_data_monthly.RDS" 
+                          created_on = FALSE,
+                          date_from = NULL, date_to = NULL, format_date = "%Y-%m-%d", tzone_date = "UTC"){
+  call_type <- "runs.json?flow=" # check no issues have occurred from moving this from function parameters to here.
   if (is.null(rapidpro_site)){
     stop("rapidpro_site is NULL. Set a website with `set_rapidpro_site`.")
   }
@@ -56,36 +68,56 @@ get_flow_data <- function(uuid_data = get_rapidpro_uuid_names(), flow_name, call
       }
     }
   }
-  flow_interaction <- NULL
-  for (i in 1:length(flow_name)){
-    uuid_flow <- uuid_data[which(uuid_data$name == flow_name[i]),]
+  flow_data_bank <- NULL
+  flow_data <- NULL
+  for (i in flow_name){
+    j <- which(flow_name == i)
+    uuid_flow <- uuid_data[which(uuid_data$name == i),]
     get_command <- paste(rapidpro_site, call_type, uuid_flow[1], sep = "")
     result_flow <- httr_get_call(get_command = get_command, token = token)
+    
     if (length(result_flow) == 0){
-      flow_interaction[[i]] <- NULL
+      flow_data[[j]] <- NULL
     } else {
-      if (!is.null(date_from)){
-        result_flow <- result_flow %>% dplyr::filter(as.POSIXct(date_from, format = format_date, tzone = tzone_date) < as.POSIXct(result_flow$created_on, format="%Y-%m-%dT%H:%M:%OS", tz = "UTC"))
-      }
-      if (!is.null(date_to)){
-        result_flow <- result_flow %>% dplyr::filter(as.POSIXct(date_to, format = format_date, tzone = tzone_date) > as.POSIXct(result_flow$created_on, format="%Y-%m-%dT%H:%M:%OS", tz = "UTC"))
-      }
-      uuid <- result_flow$contact$uuid
-      response <- result_flow$responded
-      #result <- na.omit(unique(flatten(result_flow$values)$name))[1]
-      #if (length(result) == 1){
-      #  category <- flatten(result_flow$values %>% dplyr::select({{ result }}))$category
-      #} else {
-      #  warning("category result not found")
-      #  category <- NA
-      #}
-      flow_interaction[[i]] <- tibble::tibble(uuid, response)#, category)
-      flow_interaction[[i]] <- flow_interaction[[i]] %>% dplyr::mutate(flow_type = uuid_flow[1])
-      #if (flatten){
-      flow_interaction[[i]] <- jsonlite::flatten(flow_interaction[[i]])
-      #}
+      flow_data[[j]] <- flow_data_calculation(result_flow = result_flow, flatten = flatten, flow_type = flow_type, date_from = date_from, date_to = date_to,
+                                              format_date = format_date, tzone_date = tzone_date, created_on = created_on) %>%
+        dplyr::mutate(flow_type = uuid_flow[1,1]) 
     }
   }
-  names(flow_interaction) <- flow_name[1:length(flow_interaction)]
-  return(flow_interaction)
+  if (!is.null(flow_data)){
+    names(flow_data) <- flow_name[1:length(flow_data)]
+  }
+  flow_data <- plyr::ldply(flow_data)
+  
+  if (!include_archived_data){
+    flow_data_bank <- flow_data
+  } else {
+    flow_data_bank[[1]] <- flow_data
+    if (get_by == "read"){
+      archived_data <- readRDS(read_archived_data_from)
+    } else {
+      archived_data <- data_from_archived
+    }
+    arch_data_bank <- NULL
+    for (i in flow_name){
+      j <- which(flow_name == i)
+      uuid_flow <- uuid_data[which(uuid_data$name == i),]
+      arch_data <- NULL
+      for (k in 1:length(archived_data)){
+        arch_flow_data_K <- archived_data[[k]] %>% dplyr::filter(archived_data[[k]]$flow$name == i)
+        arch_data[[k]] <- flow_data_calculation(result_flow = arch_flow_data_K, flow_type = flow_type)
+      }
+      names(arch_data) <- names(archived_data)[1:length(arch_data)]
+      arch_data_bank[[j]] <- plyr::ldply(arch_data)
+      arch_data_bank[[j]]$`.id` <- NULL
+      arch_data_bank[[j]] <- arch_data_bank[[j]] %>% dplyr::mutate(flow_type = uuid_flow[1,1])
+    }
+    names(arch_data_bank) <- flow_name
+    arch_data_bank <- plyr::ldply(arch_data_bank)
+    
+    flow_data_bank[[2]] <- arch_data_bank
+    names(flow_data_bank) <- c("Current", "Archived")
+    flow_data_bank <- plyr::ldply(flow_data_bank)
+  }
+  return(flow_data_bank)
 }

@@ -7,18 +7,22 @@
 get_user_data(
   rapidpro_site = get_rapidpro_site(),
   token = get_rapidpro_key(),
+  call_type = "contacts.json?group=joined",
   flatten = FALSE,
   date_from = NULL,
   date_to = NULL,
   format_date = "\%Y-\%m-\%d",
   tzone_date = "UTC",
-  unlist_consent = TRUE
+  type = "parenttext",
+  unlist_consent = FALSE
 )
 }
 \arguments{
 \item{rapidpro_site}{A string containing the rapidpro website to call the data from. See \code{set_rapidpro_site()} to amend the website.}
 
 \item{token}{A string containing the token to call the data. See \code{set_rapidpro_key()} to amend the token.}
+
+\item{call_type}{A string containing the call type. By default this is \code{"contacts.json?group=joined"}. To get the user data, use \code{"contacts.json?group=joined"} or \code{"contacts.json"}.}
 
 \item{flatten}{Default \code{FALSE}. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
 
@@ -30,11 +34,13 @@ get_user_data(
 
 \item{tzone_date}{from \verb{as.POSIX*} function: time zone specification to be used for the conversion, if one is required. System-specific (see time zones), but "" is the current time zone, and "GMT" is UTC (Universal Time, Coordinated). Invalid values are most commonly treated as UTC, on some platforms with a warning.}
 
-\item{unlist_consent}{boolean denoting whether to unlist a variable containing "consent".}
+\item{type}{character string giving the source of data (\code{"parenttext"}, \code{"srh_user"})}
+
+\item{unlist_consent}{Default \code{FALSE}. A boolean denoting whether to unlist a variable containing "consent".}
 }
 \value{
 returns a data frame containing the contact data.
 }
 \description{
-Call the contact data from RapidPro for each user
+Call the contact data from RapidPro for each user. A wrapper function to \code{get_data_from_rapidpro_api}.
 }

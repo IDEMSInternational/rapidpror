@@ -1,8 +1,7 @@
 #' Calling data from RapidPro API
-#' 
 #' @description A generalised way to call data from the RapidPro API.
 #'
-#' @param call_type A string containing the call type, e.g., `"flows.json"`.
+#' @param call_type A string containing the call type; for example, `"flows.json"`.
 #' @param rapidpro_site A string containing the rapidpro website to call the data from. See `set_rapidpro_site()` to amend the website.
 #' @param token A string containing the token to call the data. See `set_rapidpro_key()` to amend the token.
 #' @param flatten Default `FALSE`. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.
@@ -36,7 +35,7 @@ get_data_from_rapidpro_api <- function(call_type, rapidpro_site = get_rapidpro_s
   if (!is.null(date_from)){
     user_result <- user_result %>% dplyr::filter(as.POSIXct(date_from, format=format_date, tzone = tzone_date) < as.POSIXct(user_result$created_on, format="%Y-%m-%dT%H:%M:%OS", tz = "UTC"))
   }
-    if (!is.null(date_to)){
+  if (!is.null(date_to)){
     user_result <- user_result %>% dplyr::filter(as.POSIXct(date_to, format=format_date, tzone = tzone_date) > as.POSIXct(user_result$created_on, format="%Y-%m-%dT%H:%M:%OS", tz = "UTC"))
   }
   return(user_result)

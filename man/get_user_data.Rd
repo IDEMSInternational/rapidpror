@@ -13,7 +13,6 @@ get_user_data(
   date_to = NULL,
   format_date = "\%Y-\%m-\%d",
   tzone_date = "UTC",
-  type = "parenttext",
   unlist_consent = FALSE
 )
 }
@@ -33,8 +32,6 @@ get_user_data(
 \item{format_date}{from \verb{as.POSIX*} function: character string giving a date-time format as used by \code{strptime}.}
 
 \item{tzone_date}{from \verb{as.POSIX*} function: time zone specification to be used for the conversion, if one is required. System-specific (see time zones), but "" is the current time zone, and "GMT" is UTC (Universal Time, Coordinated). Invalid values are most commonly treated as UTC, on some platforms with a warning.}
-
-\item{type}{character string giving the source of data (\code{"parenttext"}, \code{"srh_user"})}
 
 \item{unlist_consent}{Default \code{FALSE}. A boolean denoting whether to unlist a variable containing "consent".}
 }

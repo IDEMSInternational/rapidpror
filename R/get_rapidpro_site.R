@@ -3,6 +3,6 @@
 #'
 #' @return returns a string containing the website name set in the environment for the RapidPro data.
 #' @export
-get_rapidpro_site = function() {
+get_rapidpro_site <- function() {
   get("rapidpro_site", envir = pkg_env)
 }

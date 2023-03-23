@@ -7,7 +7,7 @@
 set_rapidpro_uuid_names(uuid_names = get_flow_names())
 }
 \arguments{
-\item{uuid_names}{Default get_flow_names() (recommended). Data frame containing the flow names and UUIDs.}
+\item{uuid_names}{Default \code{get_flow_names()} (recommended). Data frame containing the flow names and UUIDs.}
 }
 \value{
 Setting a data frame containing RapidPro flow data to the environment.

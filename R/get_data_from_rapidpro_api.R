@@ -11,7 +11,7 @@
 #' @param tzone_date from `as.POSIX*` function: time zone specification to be used for the conversion, if one is required. System-specific (see time zones), but "" is the current time zone, and "GMT" is UTC (Universal Time, Coordinated). Invalid values are most commonly treated as UTC, on some platforms with a warning.
 #' 
 #' @return A data frame of the data specified in the `call_type` parameter.
-#' 
+#' @export
 #' @importFrom dplyr %>%
 get_data_from_rapidpro_api <- function(call_type, rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), flatten = FALSE,
                                        date_from = NULL, date_to = NULL, format_date = "%Y-%m-%d", tzone_date = "UTC"){

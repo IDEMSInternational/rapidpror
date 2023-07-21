@@ -5,7 +5,6 @@
 #' @param token A string containing the token to call the data. See `set_rapidpro_key()` to amend the token.
 #'
 #' @return A data frame containing RapidPro data.
-#' @export
 httr_get_call <- function(get_command, token = get_rapidpro_key()){
   if (is.null(token)){
     stop("token is NULL. Set token with `set_rapidpro_key`.")

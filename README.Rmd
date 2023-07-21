@@ -52,6 +52,7 @@ In RapidPro, each website is associated with a unique token or "key." To simplif
 
 - `set_rapidpro_key()` sets the rapidpro key.
 - `set_rapidpro_site()` sets the rapidpro website.
+
 Once the key and site are defined, you can use the corresponding `get` functions to access them from other `rapidpror` functions effortlessly:
 
 - `get_rapidpro_key()` gets the rapidpro key.

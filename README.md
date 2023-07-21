@@ -46,13 +46,12 @@ simplify data retrieval and avoid repetitive key entry, we’ve designed
 the following functions to be defined in the package environment:
 
 - `set_rapidpro_key()` sets the rapidpro key.
+- `set_rapidpro_site()` sets the rapidpro website.
 
-- `set_rapidpro_site()` sets the rapidpro website. Once the key and site
-  are defined, you can use the corresponding `get` functions to access
-  them from other `rapidpror` functions effortlessly:
+Once the key and site are defined, you can use the corresponding `get`
+functions to access them from other `rapidpror` functions effortlessly:
 
 - `get_rapidpro_key()` gets the rapidpro key.
-
 - `get_rapidpro_site()` gets the rapidpro website.
 
 ### Flow Data and User Data:

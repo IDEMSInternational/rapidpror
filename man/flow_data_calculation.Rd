@@ -20,7 +20,7 @@ flow_data_calculation(
 
 \item{flatten}{Default \code{FALSE}. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
 
-\item{flow_type}{Default \code{none}. Takes values \code{"praise"}, \code{"calm"}, \code{"check_in"}, \code{"tips"}, \code{"none"}. These are related to ParentText.}
+\item{flow_type}{Default \code{none}. Takes values \code{"praise"}, \code{"calm"}, \code{"check_in"}, \code{"tips"}, \code{"none"}. These are related to ParentText analysis.}
 
 \item{date_from}{character string giving the date to filter the data from.}
 

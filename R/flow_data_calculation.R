@@ -3,7 +3,7 @@
 #'
 #' @param result_flow Data frame containing flow data.
 #' @param flatten Default `FALSE`. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.
-#' @param flow_type Default `none`. Takes values `"praise"`, `"calm"`, `"check_in"`, `"tips"`, `"none"`. These are related to ParentText.
+#' @param flow_type Default `none`. Takes values `"praise"`, `"calm"`, `"check_in"`, `"tips"`, `"none"`. These are related to ParentText analysis.
 #' @param date_from character string giving the date to filter the data from.
 #' @param date_to character string giving the date to filter the data to.
 #' @param format_date from `as.POSIX*` function: character string giving a date-time format as used by `strptime`.
@@ -11,11 +11,8 @@
 #' @param created_on Parameter for flow_data.
 #'
 #' @return Data frame displaying the flow data.
-#' @export
 #'
 #' @importFrom dplyr %>%
-# TODO: this should not be called/used. 
-# TODO: this is relevant to ParentText
 flow_data_calculation <- function(result_flow, flatten = FALSE, flow_type = "none", date_from = NULL, date_to = NULL,
                                   format_date = "%Y-%m-%d", tzone_date = "UTC", created_on = FALSE){
   if (length(result_flow) == 0){
@@ -34,6 +31,7 @@ flow_data_calculation <- function(result_flow, flatten = FALSE, flow_type = "non
     modified_on <- result_flow$modified_on
     exited_on <- result_flow$exited_on
     
+    # Relevant to ParentText only -----------------------------------------------------
     # for check in:
     if (flow_type == "praise" && nrow(result_flow$values) > 0){
       response <- result_flow$values$praise_interaction$category 
@@ -67,23 +65,9 @@ flow_data_calculation <- function(result_flow, flatten = FALSE, flow_type = "non
       }
       flow_interaction <- tibble::tibble(uuid, interacted, category, created_run_on)
     } else {
-      #if (created_on){
       flow_interaction <- tibble::tibble(uuid, interacted, created_run_on)
-      #} else {
-      #  flow_interaction <- tibble::tibble(uuid, interacted)
-      #}
-      ##flow_interaction <- tibble::tibble(uuid, interacted, exit_type, created_on, modified_on, exited_on)
     }
-    #result <- na.omit(unique(flatten(result_flow$values)$name))[1]
-    #if (length(result) == 1){
-    #  category <- flatten(result_flow$values %>% dplyr::select({{ result }}))$category
-    #} else {
-    #  warning("category result not found")
-    #  category <- NA
-    #}
-    #if (flatten){
     flow_interaction <- jsonlite::flatten(flow_interaction)
-    #}
   }
   return(flow_interaction)
 }

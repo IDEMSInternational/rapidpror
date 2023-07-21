@@ -85,4 +85,4 @@ archived data, we provide the following functions:
 
 ## Usage
 
-We aim to add some examples here in using the functions in `rapidpror()`
+We aim to add some examples here in using the functions in `rapidpror`.

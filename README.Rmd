@@ -73,4 +73,4 @@ Data in RapidPro gets archived after a specific period. To access archived data,
 - `update_archived_data()` Resaves the archived data with newer data, saving time and computing power during retrieval.
 
 ## Usage
-We aim to add some examples here in using the functions in `rapidpror()`
+We aim to add some examples here in using the functions in `rapidpror`.

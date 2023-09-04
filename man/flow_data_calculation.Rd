@@ -8,6 +8,7 @@ flow_data_calculation(
   result_flow,
   flatten = FALSE,
   flow_type = "none",
+  flow_handle_type = NULL,
   date_from = NULL,
   date_to = NULL,
   format_date = "\%Y-\%m-\%d",
@@ -21,6 +22,8 @@ flow_data_calculation(
 \item{flatten}{Default \code{FALSE}. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
 
 \item{flow_type}{Default \code{none}. Takes values \code{"praise"}, \code{"calm"}, \code{"check_in"}, \code{"tips"}, \code{"none"}. These are related to ParentText analysis.}
+
+\item{flow_handle_type}{Default \code{NULL}. If \code{flow_type} is \code{other}, this is the value of the flow under \verb{$value} to get the response for.}
 
 \item{date_from}{character string giving the date to filter the data from.}
 

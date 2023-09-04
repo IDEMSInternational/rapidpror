@@ -12,6 +12,7 @@ get_flow_data(
   flatten = FALSE,
   checks = FALSE,
   flow_type = "none",
+  flow_handle_type = NULL,
   include_archived_data = FALSE,
   get_by = "gotit",
   data_from_archived = NULL,
@@ -36,7 +37,9 @@ get_flow_data(
 
 \item{checks}{Default \code{FALSE}. A boolean whether to check and update the data if it is not found.}
 
-\item{flow_type}{Default \code{none}. Takes values \code{"praise"}, \code{"calm"}, \code{"check_in"}, \code{"tips"}, \code{"none"}. These are related to ParentText.}
+\item{flow_type}{Default \code{none}. Takes values \code{"praise"}, \code{"calm"}, \code{"check_in"}, \code{"tips"}, \code{"none"}, \code{"other"}. These are related to ParentText.}
+
+\item{flow_handle_type}{Default \code{NULL}. If \code{flow_type} is \code{other}, this is the value of the flow under \verb{$value} to get the response for.}
 
 \item{include_archived_data}{Default \code{FALSE}. A boolean denoting whether to include archived data or not.}
 

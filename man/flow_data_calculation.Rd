@@ -2,7 +2,7 @@
 % Please edit documentation in R/flow_data_calculation.R
 \name{flow_data_calculation}
 \alias{flow_data_calculation}
-\title{Calculation to get the flow data.}
+\title{Calculate flow data.}
 \usage{
 flow_data_calculation(
   result_flow,
@@ -26,9 +26,9 @@ flow_data_calculation(
 
 \item{date_to}{character string giving the date to filter the data to.}
 
-\item{format_date}{from \verb{as.POSIX*} function: character string giving a date-time format as used by \code{strptime}.}
+\item{format_date}{character string giving a date-time format as used by \code{strptime}.}
 
-\item{tzone_date}{from \verb{as.POSIX*} function: time zone specification to be used for the conversion, if one is required. System-specific (see time zones), but "" is the current time zone, and "GMT" is UTC (Universal Time, Coordinated). Invalid values are most commonly treated as UTC, on some platforms with a warning.}
+\item{tzone_date}{time zone specification to be used for the conversion, if one is required.}
 
 \item{created_on}{Parameter for flow_data.}
 }
@@ -36,5 +36,5 @@ flow_data_calculation(
 Data frame displaying the flow data.
 }
 \description{
-This is called in the \code{get_flow_data} function. This function arranges the function for different flow types.
+This function arranges flow data for different flow types.
 }

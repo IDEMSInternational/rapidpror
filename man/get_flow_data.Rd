@@ -13,6 +13,7 @@ get_flow_data(
   checks = FALSE,
   flow_type = "none",
   flow_handle_type = NULL,
+  flow_handle_type_sub = "category",
   include_archived_data = FALSE,
   get_by = "gotit",
   data_from_archived = NULL,

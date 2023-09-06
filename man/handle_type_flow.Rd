@@ -4,12 +4,14 @@
 \alias{handle_type_flow}
 \title{Helper function to handle flow data of a specified type.}
 \usage{
-handle_type_flow(data, type = "completed")
+handle_type_flow(data, type = "completed", type_2 = "category")
 }
 \arguments{
 \item{data}{A data frame containing flow data.}
 
 \item{type}{The type of flow data to handle.}
+
+\item{type_2}{The group within \code{type} to handle.}
 }
 \value{
 A tibble with relevant information.

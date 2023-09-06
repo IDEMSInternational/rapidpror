@@ -80,11 +80,12 @@ handle_check_in_2_flow <- function(data) {
 #'
 #' @param data A data frame containing flow data.
 #' @param type The type of flow data to handle.
+#' @param type_2 The group within `type` to handle.
 #'
 #' @return A tibble with relevant information.
 #'
-handle_type_flow <- function(data, type = "completed") {
-  response <- ifelse(is.na(data$values[[type]]$category), "No response", data$values[[type]]$category)
+handle_type_flow <- function(data, type = "completed", type_2 = "category") {
+  response <- ifelse(is.na(data$values[[type]][[type_2]]), "No response", data$values[[type]][[type_2]])
   return(tibble::tibble(uuid = data$contact$uuid, interacted = data$responded, response, created_run_on = data$created_on))
 }
 

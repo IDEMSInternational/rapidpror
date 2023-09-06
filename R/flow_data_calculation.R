@@ -15,10 +15,10 @@
 #' @return Data frame displaying the flow data.
 #'
 #' @importFrom dplyr %>%
-flow_data_calculation <- function(result_flow, flatten = FALSE, flow_type = "none", flow_handle_type = NULL, date_from = NULL, date_to = NULL,
+flow_data_calculation <- function(result_flow, flatten = FALSE, flow_type = "none", flow_handle_type = NULL, flow_handle_type_sub = "category", date_from = NULL, date_to = NULL,
                                   format_date = "%Y-%m-%d", tzone_date = "UTC", created_on = FALSE) {
   if (length(result_flow) == 0) {
-    return(NULL)
+    return(NULL) 
   }
   if (flow_type == "other"){
     if (is.null(flow_handle_type)){
@@ -46,7 +46,7 @@ flow_data_calculation <- function(result_flow, flatten = FALSE, flow_type = "non
                              "check_in" = handle_check_in_flow(result_flow),
                              "check_in_2" = handle_check_in_2_flow(result_flow),
                              "tips" = handle_tips_flow(result_flow),
-                             "other" = handle_type_flow(result_flow, type = flow_handle_type),
+                             "other" = handle_type_flow(result_flow, type = flow_handle_type, type_2 = flow_handle_type_sub),
                              "none" = tibble::tibble(uuid, interacted, created_run_on)
   )
   

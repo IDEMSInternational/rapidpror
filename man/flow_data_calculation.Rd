@@ -9,6 +9,7 @@ flow_data_calculation(
   flatten = FALSE,
   flow_type = "none",
   flow_handle_type = NULL,
+  flow_handle_type_sub = "category",
   date_from = NULL,
   date_to = NULL,
   format_date = "\%Y-\%m-\%d",

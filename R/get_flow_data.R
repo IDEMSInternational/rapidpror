@@ -24,11 +24,12 @@
 # TODO: `flow_type` is relevant to ParentText. We should have a general wrapper for this function in the rapidpror package
 # That wrapper function calls this parenttext specific function from a separate package, and has flow_type = "none".
 get_flow_data <- function (uuid_data = get_rapidpro_uuid_names(), flow_name, 
-                            rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), 
-                            flatten = FALSE, checks = FALSE, flow_type = "none", flow_handle_type = NULL, include_archived_data = FALSE, 
-                            get_by = "gotit", data_from_archived = NULL, read_archived_data_from = NULL, 
-                            created_on = FALSE, date_from = NULL, date_to = NULL, format_date = "%Y-%m-%d", 
-                            tzone_date = "UTC") 
+                           rapidpro_site = get_rapidpro_site(), token = get_rapidpro_key(), 
+                           flatten = FALSE, checks = FALSE, flow_type = "none",
+                           flow_handle_type = NULL, flow_handle_type_sub = "category",
+                           include_archived_data = FALSE, get_by = "gotit", data_from_archived = NULL, 
+                           read_archived_data_from = NULL, created_on = FALSE, date_from = NULL, 
+                           date_to = NULL, format_date = "%Y-%m-%d", tzone_date = "UTC") 
 {
   call_type <- "runs.json?flow="
   if (is.null(rapidpro_site)) {
@@ -83,12 +84,13 @@ get_flow_data <- function (uuid_data = get_rapidpro_uuid_names(), flow_name,
                                              token = token)
     if (length(result_flow) == 0) {
       flow_data[[j]] <- NULL
-    } else {
-      flow_data[[j]] <- flow_data_calculation2(result_flow = result_flow, 
-                                               flatten = flatten, flow_type = flow_type,
-                                               flow_handle_type = flow_handle_type, date_from = date_from, 
-                                               date_to = date_to, format_date = format_date, 
-                                               tzone_date = tzone_date, created_on = created_on) %>% 
+    }
+    else {
+      flow_data[[j]] <- flow_data_calculation(result_flow = result_flow, 
+                                              flatten = flatten, flow_type = flow_type, flow_handle_type = flow_handle_type, 
+                                              flow_handle_type_sub = flow_handle_type_sub,
+                                              date_from = date_from, date_to = date_to, format_date = format_date, 
+                                              tzone_date = tzone_date, created_on = created_on) %>% 
         dplyr::mutate(flow_type = uuid_flow[1, 1])
     }
   }

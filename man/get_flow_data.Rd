@@ -11,6 +11,7 @@ get_flow_data(
   token = get_rapidpro_key(),
   flatten = FALSE,
   checks = FALSE,
+  return_all = FALSE,
   flow_type = "none",
   flow_handle_type = NULL,
   flow_handle_type_sub = "category",
@@ -38,7 +39,9 @@ get_flow_data(
 
 \item{checks}{Default \code{FALSE}. A boolean whether to check and update the data if it is not found.}
 
-\item{flow_type}{Default \code{none}. Takes values \code{"praise"}, \code{"calm"}, \code{"check_in"}, \code{"tips"}, \code{"none"}, \code{"other"}. These are related to ParentText.}
+\item{return_all}{Default \code{FALSE}. A boolean whether to return a specific part of the string, or all of the data.}
+
+\item{flow_type}{Only if \code{return_all = FALSE}. Default \code{none}. Takes values \code{"praise"}, \code{"calm"}, \code{"check_in"}, \code{"tips"}, \code{"none"}, \code{"other"}. These are related to ParentText.}
 
 \item{flow_handle_type}{Default \code{NULL}. If \code{flow_type} is \code{other}, this is the value of the flow under \verb{$value} to get the response for.}
 

@@ -26,6 +26,8 @@ flow_data_calculation(
 
 \item{flow_handle_type}{Default \code{NULL}. If \code{flow_type} is \code{other}, this is the value of the flow under \verb{$value} to get the response for.}
 
+\item{flow_handle_type_sub}{Default \code{NULL}. If \code{flow_type} is \code{other}, this is the group within \code{flow_handle_type} to handle.}
+
 \item{date_from}{character string giving the date to filter the data from.}
 
 \item{date_to}{character string giving the date to filter the data to.}

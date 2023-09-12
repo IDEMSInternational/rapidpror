@@ -6,6 +6,7 @@
 #' @param flatten Default `FALSE`. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.
 #' @param flow_type Default `none`. Takes values `"praise"`, `"calm"`, `"check_in"`, `"tips"`, `"none"`. These are related to ParentText analysis.
 #' @param flow_handle_type Default `NULL`. If `flow_type` is `other`, this is the value of the flow under `$value` to get the response for.
+#' @param flow_handle_type_sub Default `NULL`. If `flow_type` is `other`, this is the group within `flow_handle_type` to handle.
 #' @param date_from character string giving the date to filter the data from.
 #' @param date_to character string giving the date to filter the data to.
 #' @param format_date character string giving a date-time format as used by `strptime`.

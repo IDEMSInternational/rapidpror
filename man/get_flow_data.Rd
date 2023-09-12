@@ -45,6 +45,8 @@ get_flow_data(
 
 \item{flow_handle_type}{Default \code{NULL}. If \code{flow_type} is \code{other}, this is the value of the flow under \verb{$value} to get the response for.}
 
+\item{flow_handle_type_sub}{Default \code{NULL}. If \code{flow_type} is \code{other}, this is the group within \code{flow_handle_type} to handle.}
+
 \item{include_archived_data}{Default \code{FALSE}. A boolean denoting whether to include archived data or not.}
 
 \item{get_by}{A string denoting how to access the archived data (if \code{include_archived_data} is \code{TRUE}). Options are \code{"read_from_RDS"}, \code{"gotit"}. The first denotes that the data is read from an RDS file (given in \code{read_archived_data_from}), the latter that the data is stored and will be read in directly (see \code{data_from_archived}).}

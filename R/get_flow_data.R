@@ -10,6 +10,7 @@
 #' @param return_all Default `FALSE`. A boolean whether to return a specific part of the string, or all of the data.
 #' @param flow_type Only if `return_all = FALSE`. Default `none`. Takes values `"praise"`, `"calm"`, `"check_in"`, `"tips"`, `"none"`, `"other"`. These are related to ParentText.
 #' @param flow_handle_type Default `NULL`. If `flow_type` is `other`, this is the value of the flow under `$value` to get the response for.
+#' @param flow_handle_type_sub Default `NULL`. If `flow_type` is `other`, this is the group within `flow_handle_type` to handle.
 #' @param include_archived_data Default `FALSE`. A boolean denoting whether to include archived data or not.
 #' @param get_by A string denoting how to access the archived data (if `include_archived_data` is `TRUE`). Options are `"read_from_RDS"`, `"gotit"`. The first denotes that the data is read from an RDS file (given in `read_archived_data_from`), the latter that the data is stored and will be read in directly (see `data_from_archived`).
 #' @param data_from_archived If `get_by = "gotit"`, this is the archived data.

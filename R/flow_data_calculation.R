@@ -13,6 +13,7 @@
 #' @param created_on Parameter for flow_data.
 #'
 #' @return Data frame displaying the flow data.
+#' @export
 #'
 #' @importFrom dplyr %>%
 flow_data_calculation <- function(result_flow, flatten = FALSE, flow_type = "none", flow_handle_type = NULL, flow_handle_type_sub = "category", date_from = NULL, date_to = NULL,

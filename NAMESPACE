@@ -2,6 +2,7 @@
 
 export("%>%")
 export(days_active_data)
+export(flow_data_calculation)
 export(get_archived_data)
 export(get_data_from_rapidpro_api)
 export(get_flow_data)

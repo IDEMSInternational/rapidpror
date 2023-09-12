@@ -8,6 +8,7 @@
 #' @param tzone The time zone specification to be used for conversion.
 #' @param start A logical value indicating whether to filter for dates before or after the specified date.
 #'
+#' @export
 #' @return A filtered data frame.
 #'
 #' @importFrom dplyr %>%
@@ -26,6 +27,7 @@ filter_date_range <- function(data, date, format, tzone, start = TRUE) {
 #'
 #' @param data A data frame containing praise flow data.
 #'
+#' @export
 #' @return A tibble with relevant information.
 #'
 handle_praise_flow <- function(data) {
@@ -40,6 +42,7 @@ handle_praise_flow <- function(data) {
 #'
 #' @param data A data frame containing calm flow data.
 #'
+#' @export
 #' @return A tibble with relevant information.
 #'
 handle_calm_flow <- function(data) {
@@ -54,11 +57,12 @@ handle_calm_flow <- function(data) {
 #'
 #' @param data A data frame containing check-in flow data.
 #'
+#' @export
 #' @return A tibble with relevant information.
 #'
 handle_check_in_flow <- function(data) {
   managed_to_do_something <- ifelse(is.na(data$values$checkin_managed$category), "No response", data$values$checkin_managed$category)
-  response <- ifelse(is.na(data$values$checkin_how$category), "No response", data$values$checkin_how$category)
+  response <- ifelse(is.na(data$values$checkin_how$category) || is.null(data$values$checkin_how$category), "No response", data$values$checkin_how$category)
   return(tibble::tibble(uuid = data$contact$uuid, interacted = data$responded, managed_to_do_something, response, created_run_on = data$created_on))
 }
 
@@ -68,6 +72,7 @@ handle_check_in_flow <- function(data) {
 #'
 #' @param data A data frame containing check-in 2 flow data.
 #'
+#' @export
 #' @return A tibble with relevant information.
 #'
 handle_check_in_2_flow <- function(data) {
@@ -82,6 +87,7 @@ handle_check_in_2_flow <- function(data) {
 #' @param type The type of flow data to handle.
 #' @param type_2 The group within `type` to handle.
 #'
+#' @export
 #' @return A tibble with relevant information.
 #'
 handle_type_flow <- function(data, type = "completed", type_2 = "category") {
@@ -95,6 +101,7 @@ handle_type_flow <- function(data, type = "completed", type_2 = "category") {
 #'
 #' @param data A data frame containing tips flow data.
 #'
+#' @export
 #' @return A tibble with relevant information.
 #'
 handle_tips_flow <- function(data) {

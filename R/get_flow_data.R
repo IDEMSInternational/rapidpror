@@ -8,7 +8,7 @@
 #' @param flatten Default `FALSE`. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.
 #' @param checks Default `FALSE`. A boolean whether to check and update the data if it is not found.
 #' @param return_all Default `FALSE`. A boolean whether to return a specific part of the string, or all of the data.
-#' @param flow_type Only if `return_all = FALSE`. Default `none`. Takes values `"praise"`, `"calm"`, `"check_in"`, `"tips"`, `"none"`, `"other"`. These are related to ParentText.
+#' @param flow_type Only if `return_all = FALSE`. Default `none`. Takes values `"other"`.
 #' @param flow_handle_type Default `NULL`. If `flow_type` is `other`, this is the value of the flow under `$value` to get the response for.
 #' @param flow_handle_type_sub Default `NULL`. If `flow_type` is `other`, this is the group within `flow_handle_type` to handle.
 #' @param include_archived_data Default `FALSE`. A boolean denoting whether to include archived data or not.

@@ -4,7 +4,7 @@
 #'
 #' @param result_flow Data frame containing flow data.
 #' @param flatten Default `FALSE`. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.
-#' @param flow_type Default `none`. Takes values `"praise"`, `"calm"`, `"check_in"`, `"tips"`, `"none"`. These are related to ParentText analysis.
+#' @param flow_type Default `none`, option of `other` to specify a handle type.
 #' @param flow_handle_type Default `NULL`. If `flow_type` is `other`, this is the value of the flow under `$value` to get the response for.
 #' @param flow_handle_type_sub Default `NULL`. If `flow_type` is `other`, this is the group within `flow_handle_type` to handle.
 #' @param date_from character string giving the date to filter the data from.
@@ -43,11 +43,6 @@ flow_data_calculation <- function(result_flow, flatten = FALSE, flow_type = "non
   
   # Handle different flow types
   flow_interaction <- switch(flow_type,
-                             "praise" = handle_praise_flow(result_flow),
-                             "calm" = handle_calm_flow(result_flow),
-                             "check_in" = handle_check_in_flow(result_flow),
-                             "check_in_2" = handle_check_in_2_flow(result_flow),
-                             "tips" = handle_tips_flow(result_flow),
                              "other" = handle_type_flow(result_flow, type = flow_handle_type, type_2 = flow_handle_type_sub),
                              "none" = tibble::tibble(uuid, interacted, created_run_on)
   )

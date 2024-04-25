@@ -22,7 +22,7 @@ flow_data_calculation(
 
 \item{flatten}{Default \code{FALSE}. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
 
-\item{flow_type}{Default \code{none}. Takes values \code{"praise"}, \code{"calm"}, \code{"check_in"}, \code{"tips"}, \code{"none"}. These are related to ParentText analysis.}
+\item{flow_type}{Default \code{none}, option of \code{other} to specify a handle type.}
 
 \item{flow_handle_type}{Default \code{NULL}. If \code{flow_type} is \code{other}, this is the value of the flow under \verb{$value} to get the response for.}
 

@@ -6,9 +6,11 @@
 \usage{
 get_flow_data(
   uuid_data = get_rapidpro_uuid_names(),
-  flow_name,
+  flow_name = NULL,
   rapidpro_site = get_rapidpro_site(),
   token = get_rapidpro_key(),
+  by = c("flow_name", "id_name"),
+  id_names = NULL,
   flatten = FALSE,
   checks = FALSE,
   return_all = FALSE,
@@ -29,11 +31,15 @@ get_flow_data(
 \arguments{
 \item{uuid_data}{A string containing UUID values. See \code{set_rapidpro_uuid_names()} to set this value.}
 
-\item{flow_name}{A string containing flow names to call data from.}
+\item{flow_name}{A string containing flow names to call data from if \verb{by = "flow_name}.}
 
 \item{rapidpro_site}{A string containing the rapidpro website to call the data from. See \code{set_rapidpro_site()} to amend the website.}
 
 \item{token}{A string containing the token to call the data. See \code{set_rapidpro_key()} to amend the token.}
+
+\item{by}{A string taking either \code{"flow_name"} or \code{"id_name"} to determine whether to filter the flow data by a given flow name, or to give all flows for a given id.}
+
+\item{id_names}{A string containing ID names to call data from if \verb{by = "id_name}.}
 
 \item{flatten}{Default \code{FALSE}. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
 
@@ -41,7 +47,7 @@ get_flow_data(
 
 \item{return_all}{Default \code{FALSE}. A boolean whether to return a specific part of the string, or all of the data.}
 
-\item{flow_type}{Only if \code{return_all = FALSE}. Default \code{none}. Takes values \code{"praise"}, \code{"calm"}, \code{"check_in"}, \code{"tips"}, \code{"none"}, \code{"other"}. These are related to ParentText.}
+\item{flow_type}{Only if \code{return_all = FALSE}. Default \code{none}. Takes values \code{"other"}.}
 
 \item{flow_handle_type}{Default \code{NULL}. If \code{flow_type} is \code{other}, this is the value of the flow under \verb{$value} to get the response for.}
 

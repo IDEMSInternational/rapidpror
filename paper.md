@@ -1,92 +1,65 @@
 ---
-title: 'Gala: A Python package for galactic dynamics'
+title: 'rapidpror: An R package for importing data from RapidPro into R'
 tags:
-  - Python
-  - astronomy
-  - dynamics
-  - galactic dynamics
-  - milky way
+  - R
+  - rapidpro
+  - mobile communication
+  - chatbots
+  - importing data
+  - data analysis
 authors:
-  - name: Adrian M. Price-Whelan
+  - name: Lily Clements
     orcid: 0000-0000-0000-0000
     equal-contrib: true
-    affiliation: "1, 2" # (Multiple affiliations must be quoted)
-  - name: Author Without ORCID
-    equal-contrib: true # (This is how you can denote equal contributions between multiple authors)
-    affiliation: 2
-  - name: Author with no affiliation
-    corresponding: true # (This is how to denote the corresponding author)
-    affiliation: 3
-  - given-names: Ludwig
-    dropping-particle: van
-    surname: Beethoven
-    affiliation: 3
+    affiliation: "1"
+  - name: David Stern
+    orcid: 0000-0000-0000-0000
+    equal-contrib: true
+    affiliation: "1"
+  - name: Chiara Facciola?
 affiliations:
- - name: Lyman Spitzer, Jr. Fellow, Princeton University, USA
+ - name: IDEMS International
    index: 1
- - name: Institution Name, Country
-   index: 2
- - name: Independent Researcher, Country
-   index: 3
-date: 13 August 2017
+date: 29 April 2024
 bibliography: paper.bib
 
-# Optional fields if submitting to a AAS journal too, see this blog post:
-# https://blog.joss.theoj.org/2018/12/a-new-collaboration-with-aas-publishing
-aas-doi: 10.3847/xxxxx <- update this with the DOI from AAS once you know it.
-aas-journal: Astrophysical Journal <- The name of the AAS journal.
 ---
 
 # Summary
 
-The forces on stars, galaxies, and dark matter under external gravitational
-fields lead to the dynamical evolution of structures in the universe. The orbits
-of these bodies are therefore key to understanding the formation, history, and
-future state of galaxies. The field of "galactic dynamics," which aims to model
-the gravitating components of galaxies to study their structure and evolution,
-is now well-established, commonly taught, and frequently used in astronomy.
-Aside from toy problems and demonstrations, the majority of problems require
-efficient numerical tools, many of which require the same base code (e.g., for
-performing numerical orbit integration).
+This article introduces `rapidpror`, an R package developed to integrate with RapidPro, a platform developed by UNICEF for creating mobile-based messaging systems like chatbots [@rapidpro]. RapidPro, particularly beneficial in low-connectivity or crisis-affected areas, supports various activities including social and behavioural change communication, and data collection across humanitarian and developmental sectors [@about_rapidpro].
+
+The `rapidpror` package simplifies the process of importing chatbot data from RapidPro into the R environment. It incorporates filtering methods and automatic data frame linking to help enhance the data analysis process. This functionality serves to broaden the accessibility of data analysis, catering to users at various levels of R proficiency to help promote efficient research.
 
 # Statement of need
 
-`Gala` is an Astropy-affiliated Python package for galactic dynamics. Python
-enables wrapping low-level languages (e.g., C) for speed without losing
-flexibility or ease-of-use in the user-interface. The API for `Gala` was
-designed to provide a class-based and user-friendly interface to fast (C or
-Cython-optimized) implementations of common operations such as gravitational
-potential and force evaluation, orbit integration, dynamical transformations,
-and chaos indicators for nonlinear dynamics. `Gala` also relies heavily on and
-interfaces well with the implementations of physical units and astronomical
-coordinate systems in the `Astropy` package [@astropy] (`astropy.units` and
-`astropy.coordinates`).
+RapidPro, developed by UNICEF, is a free, open-source platform designed to create and manage mobile-based messaging systems, such as chatbots [@rapidpro]. This tool is instrumental in facilitating social and behavioral change communication (SBCC) and data collection across various humanitarian and developmental contexts [@unicef2020global]. By enabling operations in regions with limited internet connectivity, RapidPro is particularly valuable in underserved or crisis-affected areas providing real-time information on activities such as health, education, and child-protection [@about_rapidpro].
 
-`Gala` was designed to be used by both astronomical researchers and by
-students in courses on gravitational dynamics or astronomy. It has already been
-used in a number of scientific publications [@Pearson:2017] and has also been
-used in graduate courses on Galactic dynamics to, e.g., provide interactive
-visualizations of textbook material [@Binney:2008]. The combination of speed,
-design, and support for Astropy functionality in `Gala` will enable exciting
-scientific explorations of forthcoming data releases from the *Gaia* mission
-[@gaia] by students and experts alike.
+In this article, we present `rapidpror`, an R package that allows for chatbot data to be efficiently and easily imported from RapidPro into R. This is achieved by incorporating advanced filtering mechanisms and automatic linking of different data frames obtained from RapidPro. `rapidpror` caters to users with varying levels of experience in R.
 
-# Mathematics
+By simplifying the data import process through `rapidpror`, users can engage more deeply with the insights provided by chatbot data. This can empower researchers to make informed decisions and interventions. This capability is particularly relevant for researchers where timely and efficient data analysis can drive impactful outcomes. 
 
-Single dollars ($) are required for inline mathematics e.g. $f(x) = e^{\pi/x}$
+`rapidpror` is positioned within the broader context of computational tools for data-driven research, offering a direct, simplified channel between the chatbot data received by RapidPro, and statistical analysis tools in R.
 
-Double dollars make self-standing equations:
+# Usage
 
-$$\Theta(x) = \left\{\begin{array}{l}
-0\textrm{ if } x < 0\cr
-1\textrm{ else}
-\end{array}\right.$$
+The use of `rapidpror` begins by establishing a connection to RapidPro using the user's API credentials. This involves setting the API key and the RapidPro site URL with the following functions:
 
-You can also use plain \LaTeX for equations
-\begin{equation}\label{eq:fourier}
-\hat f(\omega) = \int_{-\infty}^{\infty} f(x) e^{i\omega x} dx
-\end{equation}
-and refer to \autoref{eq:fourier} from text.
+```
+rapidpror::set_rapidpro_key(key = "YOUR_API_TOKEN_HERE")
+rapidpror::set_rapidpro_site(site = "YOUR_RAPIDPRO_SITE_URL_HERE")
+```
+
+This stores the key and site, ensuring that subsequent calls to RapidPro use these credentials. RapidPro processes data at various levels. The primary focus is on user data and flow data:
+
+- User Data: This includes information related to the users of the chatbot system. To retrieve this data, use `get_user_data()`.
+- Flow Data: This refers to the data generated by interactions within the chatbot flows. To access this data, use `get_flow_data()`. You can specify whether to call all flows for a specific set of users, or whether to call specific flows. 
+The package also allows access to RapidPro’s full suite of data through a more general function: `get_data_from_rapidpro_api()`. In this function, you can specify the call type to make. For example, `get_user_data()` is effectively running
+
+`get_data_from_rapidpro_api(call_type = “contacts.json”)`
+
+# Data Integration
+With integration support for the open-source software R-Instat [@rinstat], rapidpror enables automatic linking of different data frames obtained from RapidPro. This feature supports comprehensive analysis across various levels of data, facilitating deeper insights.
 
 # Citations
 
@@ -103,6 +76,8 @@ For a quick reference, the following citation commands can be used:
 - `[@author1:2001; @author2:2001]` -> "(Author1 et al., 2001; Author2 et al., 2002)"
 
 # Acknowledgements
+
+Mention (if applicable) a representative set of past or ongoing research projects using the software and recent scholarly publications enabled by it.
 
 We acknowledge contributions from Brigitta Sipocz, Syrtis Major, and Semyeong
 Oh, and support from Kathryn Johnston during the genesis of this project.

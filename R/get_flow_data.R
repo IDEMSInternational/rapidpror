@@ -25,9 +25,6 @@
 #'
 #' @return List separated by each flow_name provided. Each element in the list contains a data frame for each flow_name provided.
 #' @export
-# TODO: `flow_type` is relevant to ParentText. We should have a general wrapper for this function in the rapidpror package
-# That wrapper function calls this parenttext specific function from a separate package, and has flow_type = "none".
-
 get_flow_data <- function (uuid_data = get_rapidpro_uuid_names(), flow_name = NULL, rapidpro_site = get_rapidpro_site(), 
                             token = get_rapidpro_key(), by = c("flow_name", "id_name"), id_names = NULL, flatten = FALSE, checks = FALSE, 
                             return_all = FALSE, flow_type = "none", flow_handle_type = NULL, 
@@ -151,7 +148,6 @@ get_flow_data <- function (uuid_data = get_rapidpro_uuid_names(), flow_name = NU
       call_type <- "runs.json?contact="
       get_command <- paste(rapidpro_site, call_type, id_names[i], sep = "")
       result_flow <- rapidpror:::httr_get_call(get_command = get_command, token = token)
-      
       if (return_all) {
         flow_data[[i]] <- result_flow
       } else {
@@ -163,11 +159,10 @@ get_flow_data <- function (uuid_data = get_rapidpro_uuid_names(), flow_name = NU
                                                   flatten = flatten, flow_type = flow_type, flow_handle_type = flow_handle_type, 
                                                   flow_handle_type_sub = flow_handle_type_sub, 
                                                   date_from = date_from, date_to = date_to, format_date = format_date, 
-                                                  tzone_date = tzone_date, created_on = created_on) %>% 
-            dplyr::mutate(flow_type = uuid_flow[1, 1])
+                                                  tzone_date = tzone_date, created_on = created_on)
         }
       }
     }
-    return(plyr::ldply(flow_data))
+    return(dplyr::bind_rows(flow_data))
   }
 }

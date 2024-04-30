@@ -12,14 +12,11 @@ authors:
     orcid: 0000-0000-0000-0000
     equal-contrib: true
     affiliation: "1"
-  - name: Chiara Facciola (check spelling/accents)
-    orcid: 0000-0000-0000-0000
-    equal-contrib: true
-    affiliation: "1"
   - name: David Stern
     orcid: 0000-0000-0000-0000
     equal-contrib: true
     affiliation: "1"
+  - name: Chiara Facciola?
 affiliations:
  - name: IDEMS International
    index: 1
@@ -65,7 +62,6 @@ The package also allows access to RapidPro’s full suite of data through a more
 With integration support for the open-source software R-Instat [@rinstat], rapidpror enables automatic linking of different data frames obtained from RapidPro. This feature supports comprehensive analysis across various levels of data, facilitating deeper insights.
 
 # Acknowledgements
-
 Mention (if applicable) a representative set of past or ongoing research projects using the software and recent scholarly publications enabled by it.
 
 We acknowledge contributions from Brigitta Sipocz, Syrtis Major, and Semyeong

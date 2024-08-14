@@ -2,12 +2,14 @@
 % Please edit documentation in R/get_user_data.R
 \name{get_user_data}
 \alias{get_user_data}
-\title{Get data for each user}
+\title{Get data for each user from RapidPro}
 \usage{
 get_user_data(
   rapidpro_site = get_rapidpro_site(),
   token = get_rapidpro_key(),
-  call_type = "contacts.json?group=joined",
+  call_type = "contacts.json",
+  filter_variable = "group",
+  filter_variable_value = "joined",
   flatten = FALSE,
   date_from = NULL,
   date_to = NULL,
@@ -17,27 +19,48 @@ get_user_data(
 )
 }
 \arguments{
-\item{rapidpro_site}{A string containing the rapidpro website to call the data from. See \code{set_rapidpro_site()} to amend the website.}
+\item{rapidpro_site}{A string containing the RapidPro website URL from which to retrieve the data. Use \code{set_rapidpro_site()} to amend the website.}
 
-\item{token}{A string containing the token to call the data. See \code{set_rapidpro_key()} to amend the token.}
+\item{token}{A string containing the API token required for authentication. Use \code{set_rapidpro_key()} to set the token.}
 
-\item{call_type}{A string containing the call type. By default this is \code{"contacts.json?group=joined"}. To get the user data, use \code{"contacts.json?group=joined"} or \code{"contacts.json"}.}
+\item{call_type}{A string specifying the type of data call. The default is \code{"contacts.json"}. To get user data for a specific group, such as \code{"joined"}, set this parameter to \code{"contacts.json?group=joined"}, or, for multiple groups use the \code{filter_variable} and \code{filter_variable_value} parameters.}
 
-\item{flatten}{Default \code{FALSE}. A boolean denoting whether the data should be flattened into a two-dimensional tabular structure.}
+\item{filter_variable}{A string specifying the variable used to filter the data. The default is \code{"group"}. This variable is appended to the \code{call_type} to form the final API endpoint.}
 
-\item{date_from}{character string giving the date to filter the data from.}
+\item{filter_variable_value}{A string specifying the value of \code{filter_variable} used to filter the data. For example, \code{"joined"} can be used to filter contacts by group.}
 
-\item{date_to}{character string giving the date to filter the data from.}
+\item{flatten}{Logical, default is \code{FALSE}. If \code{TRUE}, the data will be flattened into a two-dimensional tabular structure.}
 
-\item{format_date}{from \verb{as.POSIX*} function: character string giving a date-time format as used by \code{strptime}.}
+\item{date_from}{A character string representing the start date to filter the data from. The date format should match \code{format_date}.}
 
-\item{tzone_date}{from \verb{as.POSIX*} function: time zone specification to be used for the conversion, if one is required. System-specific (see time zones), but "" is the current time zone, and "GMT" is UTC (Universal Time, Coordinated). Invalid values are most commonly treated as UTC, on some platforms with a warning.}
+\item{date_to}{A character string representing the end date to filter the data to. The date format should match \code{format_date}.}
 
-\item{unlist_consent}{Default \code{FALSE}. A boolean denoting whether to unlist a variable containing "consent".}
+\item{format_date}{A character string specifying the date-time format, as used by \code{strptime}. The default is \code{"\%Y-\%m-\%d"}.}
+
+\item{tzone_date}{A character string specifying the time zone for date conversion. The default is \code{"UTC"}. This parameter is passed to \code{as.POSIXct} to ensure correct time zone handling.}
+
+\item{unlist_consent}{Logical, default is \code{FALSE}. If \code{TRUE}, any variables containing "consent" in their name will be unlisted, simplifying the data structure.}
 }
 \value{
-returns a data frame containing the contact data.
+A data frame containing the contact data from RapidPro, filtered and formatted according to the specified parameters.
 }
 \description{
-Call the contact data from RapidPro for each user. A wrapper function to \code{get_data_from_rapidpro_api}.
+This function retrieves contact data from RapidPro for each user. It is a wrapper function around \code{get_data_from_rapidpro_api} and allows for filtering and formatting of the returned data.
+}
+\details{
+This function builds the API call to retrieve user data from RapidPro, with optional filtering by group and date. The retrieved data can be flattened into a simple data frame, and optional date filters can be applied. If \code{unlist_consent} is set to \code{TRUE}, variables containing "consent" will be unlisted to simplify the structure.
+}
+\examples{
+#\dontrun{
+## Set the RapidPro site and API key
+#set_rapidpro_site("https://app.rapidpro.io")
+#set_rapidpro_key("your_api_key")
+#
+# # Get data for users in the "joined" group
+# user_data <- get_user_data(call_type = "contacts.json", filter_variable = "group", filter_variable_value = "joined")
+#
+# # Get data for users in the "joined" group, filtering by date range
+# user_data <- get_user_data(call_type = "contacts.json", filter_variable = "group", filter_variable_value = "joined", date_from = "2023-01-01", date_to = "2023-12-31")
+# }
+
 }

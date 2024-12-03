@@ -20,6 +20,7 @@ link_data_frames <- function(from_data_frame="flow_data", to_data_frame="user_da
   if (!exists("data_book")){
     stop("No data book found. Likely issue: Are you importing data through R-Instat? This function is for use in R-Instat.")
   }
+  
   data_book$add_link(from_data_frame = from_data_frame,
                      to_data_frame = to_data_frame,
                      link_pairs = link_pairs,

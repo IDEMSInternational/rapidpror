@@ -1,6 +1,6 @@
 Package: rapidpror
 Title: Read Data From a RapidPro API
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     person("Lily", "Clements", , "lily@idems.international", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-8864-0552"))

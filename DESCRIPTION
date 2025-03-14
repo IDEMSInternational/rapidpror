@@ -8,7 +8,7 @@ Description: Convenience functions to help reading data from a RapidPro API into
 License: LGPL (>= 3) + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Suggests: 
     testthat (>= 2.0.0)
 Config/testthat/edition: 2

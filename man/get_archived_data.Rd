@@ -11,6 +11,7 @@ get_archived_data(
   flatten = FALSE,
   date_from = NULL,
   date_to = NULL,
+  archive_type = c("run", "messages"),
   format_date = "\%Y-\%m-\%d",
   tzone_date = "UTC"
 )
@@ -27,6 +28,8 @@ get_archived_data(
 \item{date_from}{character string giving the date to filter the data from.}
 
 \item{date_to}{character string giving the date to filter the data to.}
+
+\item{archive_type}{character string denoting whether to call \code{"runs"} or \code{"messages"} data.}
 
 \item{format_date}{from \verb{as.POSIX*} function: character string giving a date-time format as used by \code{strptime}.}
 
